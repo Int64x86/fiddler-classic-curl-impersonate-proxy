@@ -28,7 +28,7 @@ Rules > Curl Impersonate Proxy
 
 ## Установка
 
-Скопируйте содержимое папки `RELEASE` в:
+Скопируйте содержимое архива `RELEASE` в:
 
 ```text
 %USERPROFILE%\Documents\Fiddler2\Scripts
