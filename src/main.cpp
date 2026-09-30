@@ -132,6 +132,20 @@ bool recv_more(SOCKET socket, std::string& buffer) {
 
 bool send_all(SOCKET socket, const char* data, std::size_t size);
 
+void enable_abortive_close(SOCKET socket) {
+    linger option{};
+    option.l_onoff = 1;
+    option.l_linger = 0;
+
+    setsockopt(
+        socket,
+        SOL_SOCKET,
+        SO_LINGER,
+        reinterpret_cast<const char*>(&option),
+        sizeof(option)
+    );
+}
+
 bool read_chunked_body(SOCKET socket, std::string& pending, std::string& body, std::string& error) {
     while (true) {
         std::size_t line_end = pending.find("\r\n");
@@ -699,10 +713,13 @@ bool handle_request(ClientConnection& connection, CurlWorker& worker, const Conf
     const bool keep_alive = request_wants_keep_alive(request);
     TransferResult result = perform_request(
         worker, request, config, url, connection.socket);
-    if (!result.response_started) {
-        send_text_response(
-            connection.socket, 502, "Upstream request failed: " + result.error + "\n");
-    }
+	if (!result.response_started) {
+		send_text_response(
+			connection.socket, 502, "Upstream request failed: " + result.error + "\n");
+	}
+	else if (result.curl_code != CURLE_OK) {
+		enable_abortive_close(connection.socket);
+	}
     log_request(request, result, url);
     return keep_alive && result.error.empty();
 }
