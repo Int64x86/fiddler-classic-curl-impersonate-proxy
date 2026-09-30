@@ -1,0 +1,1 @@
+Fiddler Classic extension that routes captured traffic through [lexiforest/curl-impersonate](https://github.com/lexiforest/curl-impersonate) for browser TLS fingerprints and HTTP/2 or HTTP/3 upstream connections.

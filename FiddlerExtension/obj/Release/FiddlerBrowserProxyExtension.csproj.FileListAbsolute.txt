@@ -1,0 +1,6 @@
+E:\Desktop\proxy_fiddler\FiddlerExtension\bin\Release\FiddlerCurlImpersonateProxyExtension.dll
+E:\Desktop\proxy_fiddler\FiddlerExtension\bin\Release\FiddlerCurlImpersonateProxyExtension.pdb
+E:\Desktop\proxy_fiddler\FiddlerExtension\obj\Release\FiddlerBrowserProxyExtension.csproj.AssemblyReference.cache
+E:\Desktop\proxy_fiddler\FiddlerExtension\obj\Release\FiddlerBrowserProxyExtension.csproj.CoreCompileInputs.cache
+E:\Desktop\proxy_fiddler\FiddlerExtension\obj\Release\FiddlerCurlImpersonateProxyExtension.dll
+E:\Desktop\proxy_fiddler\FiddlerExtension\obj\Release\FiddlerCurlImpersonateProxyExtension.pdb
